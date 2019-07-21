@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574b</color>
+    <color name="colorAccent">#d81b60</color>
+    <color name="toolbar">#0a2b38</color>
+    <color name="white">#ffffff</color>
+    <color name="light_gray">#d3d3d3</color>
+    <color name="eth_balance">#eab42f</color>
+</resources>

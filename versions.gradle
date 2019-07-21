@@ -1,0 +1,75 @@
+def versions = [:]
+versions.constraint_layout = "2.0.0-alpha2"
+versions.support = "1.0.2"
+versions.dagger = "2.23.2"
+versions.navigation = "2.1.0-alpha04"
+versions.kotlin = "1.3.41"
+versions.junit = "4.12"
+versions.atsl_runner = "1.2.0"
+versions.espresso = "3.2.0"
+versions.rxjava = "2.2.10"
+versions.rxandroid = "2.1.1"
+versions.rxkotlin = "2.4.0-RC3"
+versions.web3j_android = "4.2.0-android"
+versions.lifecycle = '2.2.0-alpha02'
+versions.sdp_android = '1.0.6'
+versions.ssp_android = '1.0.6'
+ext.versions = versions
+
+def support = [:]
+support.app_compat = "androidx.appcompat:appcompat:$versions.support"
+support.core_ktx = "androidx.core:core-ktx:$versions.support"
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+
+def navigation = [:]
+navigation.runtime = "androidx.navigation:navigation-runtime:$versions.navigation"
+navigation.runtime_ktx = "androidx.navigation:navigation-runtime-ktx:$versions.navigation"
+navigation.fragment = "androidx.navigation:navigation-fragment:$versions.navigation"
+navigation.fragment_ktx = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.ui = "androidx.navigation:navigation-ui:$versions.navigation"
+navigation.ui_ktx = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+navigation.safe_args_plugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+
+def reactivex = [:]
+reactivex.rxjava = "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+reactivex.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
+reactivex.rxkotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin"
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+
+def atsl = [:]
+atsl.runner = "androidx.test:runner:$versions.atsl_runner"
+
+def espresso = [:]
+espresso.core = "androidx.test.espresso:espresso-core:$versions.espresso"
+
+def web3j_android = [:]
+web3j_android.core = "org.web3j:core:$versions.web3j_android"
+web3j_android.infura = "org.web3j:infura:$versions.web3j_android"
+
+def lifecycle = [:]
+lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+lifecycle.viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+
+def deps = [:]
+deps.support = support
+deps.dagger = dagger
+deps.navigation = navigation
+deps.reactivex = reactivex
+deps.kotlin = kotlin
+deps.atsl = atsl
+deps.espresso = espresso
+deps.web3j_android = web3j_android
+deps.junit = "junit:junit:$versions.junit"
+deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+deps.lifecycle = lifecycle
+deps.sdp_android = "com.intuit.sdp:sdp-android:$versions.sdp_android"
+deps.ssp_android = "com.intuit.ssp:ssp-android:$versions.ssp_android"
+ext.deps = deps
