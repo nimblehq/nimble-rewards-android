@@ -9,4 +9,5 @@ sealed class EthereumError(
 ) : AppError(cause, userMessage) {
 
     class FetchEthBalanceError(cause: Throwable?) : EthereumError(cause, R.string.error_fetch_eth_balance)
+    class TransferEthError(cause: Throwable?) : EthereumError(cause, R.string.error_transfer_eth)
 }

@@ -9,5 +9,16 @@
         android:id="@+id/walletFragment"
         android:name="com.nimble.nimblerewards.ui.screens.wallet.WalletFragment"
         android:label="@string/bottom_nav_menu_item_wallet"
-        tools:layout="@layout/fragment_wallet" />
+        tools:layout="@layout/fragment_wallet">
+
+        <action
+            android:id="@+id/action_walletFragment_to_transferFragment"
+            app:destination="@id/transferFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transferFragment"
+        android:name="com.nimble.nimblerewards.ui.screens.transfer.TransferFragment"
+        android:label="@string/transfer"
+        tools:layout="@layout/fragment_transfer" />
 </navigation>

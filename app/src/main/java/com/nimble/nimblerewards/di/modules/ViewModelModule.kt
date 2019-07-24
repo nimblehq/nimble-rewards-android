@@ -5,6 +5,7 @@ import com.nimble.nimblerewards.di.ViewModelKey
 import com.nimble.nimblerewards.ui.screens.rewards.RewardsViewModel
 import com.nimble.nimblerewards.ui.screens.settings.SettingsViewModel
 import com.nimble.nimblerewards.ui.screens.signin.SignInViewModel
+import com.nimble.nimblerewards.ui.screens.transfer.TransferViewModel
 import com.nimble.nimblerewards.ui.screens.wallet.WalletViewModel
 import dagger.Binds
 import dagger.Module
@@ -31,4 +32,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(SignInViewModel::class)
     fun signInViewModel(viewModel: SignInViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TransferViewModel::class)
+    fun transferViewModel(viewModel: TransferViewModel): ViewModel
 }

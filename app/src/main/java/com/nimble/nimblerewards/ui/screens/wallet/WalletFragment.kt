@@ -6,6 +6,7 @@ import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.core.text.bold
 import androidx.core.text.color
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.nimble.nimblerewards.R
 import com.nimble.nimblerewards.ui.common.BaseFragment
 import com.nimble.nimblerewards.ui.screens.signin.SignInActivity
@@ -28,6 +29,10 @@ class WalletFragment : BaseFragment<WalletViewModel>() {
         viewModel.openSignIn
             .subscribe { SignInActivity.launch(requireActivity()) }
             .bindForDisposable()
+
+        tvTransferEth.setOnClickListener {
+            findNavController().navigate(R.id.action_walletFragment_to_transferFragment)
+        }
     }
 
     override fun onResume() {

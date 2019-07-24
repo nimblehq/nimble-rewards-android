@@ -2,6 +2,7 @@ package com.nimble.nimblerewards.di.modules
 
 import com.nimble.nimblerewards.ui.screens.rewards.RewardsFragment
 import com.nimble.nimblerewards.ui.screens.settings.SettingsFragment
+import com.nimble.nimblerewards.ui.screens.transfer.TransferFragment
 import com.nimble.nimblerewards.ui.screens.wallet.WalletFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -17,4 +18,7 @@ interface MainActivityFragmentModule {
 
     @ContributesAndroidInjector
     fun walletFragment(): WalletFragment
+
+    @ContributesAndroidInjector
+    fun transferFragment(): TransferFragment
 }

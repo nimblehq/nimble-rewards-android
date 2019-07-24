@@ -10,6 +10,7 @@
     <string name="error_load_wallet">Failed to load wallet.</string>
     <string name="error_wallet_does_not_exist">Wallet does not exist!</string>
     <string name="error_fetch_eth_balance">Failed to fetch Ethereum balance</string>
+    <string name="error_transfer_eth">Failed to transfer Ethereum</string>
     <string name="error_sign_out">Failed to sign out</string>
 
     <string name="create_new_wallet">Create New Wallet</string>
@@ -19,4 +20,7 @@
     <string name="receive">Receive</string>
     <string name="transfer">Transfer</string>
     <string name="balance">Balance</string>
+    <string name="send">Send</string>
+    <string name="target_wallet_address">Target Wallet Address</string>
+    <string name="amount_in_ethereum">Amount in Ethereum</string>
 </resources>

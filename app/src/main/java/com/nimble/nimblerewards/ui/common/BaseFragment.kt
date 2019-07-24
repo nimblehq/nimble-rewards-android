@@ -2,6 +2,7 @@ package com.nimble.nimblerewards.ui.common
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -97,6 +98,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
             toolbarIcon?.let { toolbarIcon ->
                 val icon = resources.getDrawable(toolbarIcon, null)
                 icon?.setBounds(0, 0, toolbarIconSize, toolbarIconSize)
+                icon?.setTint(Color.WHITE)
                 titleView.setCompoundDrawables(icon, null, null, null)
             }
         }
