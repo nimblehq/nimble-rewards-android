@@ -34,12 +34,13 @@ class TransferViewModel @Inject constructor(
         }
     }
 
-    fun verifyWalletAddressError(address: String): Completable {
+    fun verifyWalletAddress(address: String): Completable {
         return Completable.fromCallable {
             if (address.isEmpty()) {
                 throw IllegalArgumentException("Wallet Address is invalid")
             }
-        }.doOnComplete { _targetAddress.onNext(address) }
+            _targetAddress.onNext(address)
+        }
     }
 
     fun verifyAmount(amount: String): Completable {
@@ -56,6 +57,8 @@ class TransferViewModel @Inject constructor(
             } catch (e: NumberFormatException) {
                 throw IllegalArgumentException("Invalid amount number")
             }
-        }.doOnComplete { _amount.onNext(amount.toBigDecimal()) }
+
+            _amount.onNext(amount.toBigDecimal())
+        }
     }
 }

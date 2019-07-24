@@ -48,7 +48,7 @@ class TransferFragment : BaseFragment<TransferViewModel>() {
     }
 
     private fun verifyTargetWalletAddress(address: String) {
-        viewModel.verifyWalletAddressError(address)
+        viewModel.verifyWalletAddress(address)
             .subscribeBy(onError = ::displayErrorMessage)
             .bindForDisposable()
     }
