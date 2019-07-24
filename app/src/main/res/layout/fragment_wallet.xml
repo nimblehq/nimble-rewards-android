@@ -59,8 +59,8 @@
         android:layout_height="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_50sdp"
         android:src="@drawable/ic_ethereum"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llWalletHeader" />
 
     <TextView
@@ -70,6 +70,7 @@
         android:layout_marginStart="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_16sdp"
+        android:textIsSelectable="true"
         app:layout_constraintTop_toBottomOf="@id/ivEthereum"
         tools:text="Address: 0x123456789" />
 
