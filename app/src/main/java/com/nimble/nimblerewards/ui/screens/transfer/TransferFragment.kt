@@ -2,7 +2,9 @@ package com.nimble.nimblerewards.ui.screens.transfer
 
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.nimble.nimblerewards.R
+import com.nimble.nimblerewards.extensions.hideSoftKeyboard
 import com.nimble.nimblerewards.ui.common.BaseFragment
 import com.nimble.nimblerewards.ui.listeners.SimpleTextChangeListener
 import io.reactivex.rxkotlin.subscribeBy
@@ -37,9 +39,14 @@ class TransferFragment : BaseFragment<TransferViewModel>() {
     }
 
     private fun transferEth(ignored: View) {
+        activity?.hideSoftKeyboard()
+        
         viewModel.transfer()
             .subscribeBy(
-                onSuccess = { toast.display(it.status) },
+                onSuccess = {
+                    toast.display(getString(R.string.transferred_successfully))
+                    findNavController().popBackStack()
+                },
                 onError = toast::display
             )
             .bindForDisposable()

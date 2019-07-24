@@ -23,4 +23,5 @@
     <string name="send">Send</string>
     <string name="target_wallet_address">Target Wallet Address</string>
     <string name="amount_in_ethereum">Amount in Ethereum</string>
+    <string name="transferred_successfully">Transferred Successfully</string>
 </resources>
