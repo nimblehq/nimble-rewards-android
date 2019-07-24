@@ -98,7 +98,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
                 icon?.setBounds(0, 0, toolbarIconSize, toolbarIconSize)
                 icon?.setTint(Color.WHITE)
                 titleView.setCompoundDrawables(icon, null, null, null)
-            }
+            } ?: titleView.setCompoundDrawables(null, null, null, null)
         }
     }
 }
