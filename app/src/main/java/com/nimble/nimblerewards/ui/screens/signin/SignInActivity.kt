@@ -11,8 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.setMargins
 import androidx.lifecycle.ViewModelProviders
 import com.nimble.nimblerewards.R
-import com.nimble.nimblerewards.data.exceptions.userReadableMessage
-import com.nimble.nimblerewards.extensions.showSnackBar
 import com.nimble.nimblerewards.ui.common.BaseActivity
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_signin.*
@@ -40,7 +38,7 @@ class SignInActivity : BaseActivity<SignInViewModel>() {
             .createWallet()
             .subscribeBy(
                 onSuccess = { finish() },
-                onError = ::displayErrorMessage
+                onError = toast::display
             )
             .bindForDisposable()
     }
@@ -50,14 +48,9 @@ class SignInActivity : BaseActivity<SignInViewModel>() {
             .importWallet(privateKey)
             .subscribeBy(
                 onSuccess = { finish() },
-                onError = ::displayErrorMessage
+                onError = toast::display
             )
             .bindForDisposable()
-    }
-
-    private fun displayErrorMessage(throwable: Throwable) {
-        findViewById<View>(android.R.id.content)
-            .showSnackBar(throwable.userReadableMessage(this))
     }
 
     // FIXME: Hacky code, it should be removed

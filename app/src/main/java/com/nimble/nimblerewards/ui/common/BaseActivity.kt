@@ -5,6 +5,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.Toolbar
 import com.nimble.nimblerewards.R
 import com.nimble.nimblerewards.di.ViewModelFactory
+import com.nimble.nimblerewards.ui.customviews.Toaster
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -14,6 +15,9 @@ abstract class BaseActivity<VM : BaseViewModel> : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    lateinit var toast: Toaster
 
     protected val viewModel: VM? by lazy { viewModel() }
 

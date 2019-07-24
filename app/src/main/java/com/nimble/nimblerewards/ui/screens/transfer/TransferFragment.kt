@@ -3,12 +3,10 @@ package com.nimble.nimblerewards.ui.screens.transfer
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.nimble.nimblerewards.R
-import com.nimble.nimblerewards.extensions.showSnackBar
 import com.nimble.nimblerewards.ui.common.BaseFragment
 import com.nimble.nimblerewards.ui.listeners.SimpleTextChangeListener
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_transfer.*
-import org.web3j.protocol.core.methods.response.TransactionReceipt
 
 class TransferFragment : BaseFragment<TransferViewModel>() {
 
@@ -41,25 +39,21 @@ class TransferFragment : BaseFragment<TransferViewModel>() {
     private fun transferEth(ignored: View) {
         viewModel.transfer()
             .subscribeBy(
-                onSuccess = ::displayReceipt,
-                onError = ::displayErrorMessage
+                onSuccess = { toast.display(it.status) },
+                onError = toast::display
             )
             .bindForDisposable()
     }
 
     private fun verifyTargetWalletAddress(address: String) {
         viewModel.verifyWalletAddress(address)
-            .subscribeBy(onError = ::displayErrorMessage)
+            .subscribeBy(onError = toast::display)
             .bindForDisposable()
     }
 
     private fun verifyAmount(amount: String) {
         viewModel.verifyAmount(amount)
-            .subscribeBy(onError = ::displayErrorMessage)
+            .subscribeBy(onError = toast::display)
             .bindForDisposable()
-    }
-
-    private fun displayReceipt(receipt: TransactionReceipt) {
-        view?.showSnackBar(receipt.status)
     }
 }

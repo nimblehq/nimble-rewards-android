@@ -12,9 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nimble.nimblerewards.R
-import com.nimble.nimblerewards.data.exceptions.userReadableMessage
 import com.nimble.nimblerewards.di.ViewModelFactory
-import com.nimble.nimblerewards.extensions.showSnackBar
+import com.nimble.nimblerewards.ui.customviews.Toaster
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -24,6 +23,9 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    lateinit var toast: Toaster
 
     protected val viewModel: VM by lazy { viewModel() }
 
@@ -85,10 +87,6 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     protected fun Disposable.bindForDisposable() {
         disposables.add(this)
-    }
-
-    protected fun displayErrorMessage(throwable: Throwable) {
-        view?.showSnackBar(throwable.userReadableMessage(requireContext()))
     }
 
     private fun setTitle() {

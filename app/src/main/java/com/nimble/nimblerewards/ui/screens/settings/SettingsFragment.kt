@@ -30,7 +30,7 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
         viewModel.signOut()
             .subscribeBy(
                 onComplete = { /* do nothing */ },
-                onError = ::displayErrorMessage
+                onError = toast::display
             )
             .bindForDisposable()
     }

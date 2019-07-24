@@ -3,26 +3,47 @@ package com.nimble.nimblerewards.di.modules
 import android.app.Application
 import android.content.Context
 import com.nimble.nimblerewards.config.Environment
+import com.nimble.nimblerewards.ui.customviews.Toaster
+import com.nimble.nimblerewards.ui.customviews.ToasterImpl
 import com.nimble.nimblerewards.usecases.RxScheduler
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [NetworkModule::class, ViewModelModule::class, RepositoryModule::class])
-internal class AppModule {
-    @Provides
-    @Singleton
-    internal fun environment(): Environment = Environment()
+@Module(
+    includes = [
+        NetworkModule::class,
+        ViewModelModule::class,
+        RepositoryModule::class
+    ]
+)
+abstract class AppModule {
 
-    @Provides
+    @Binds
     @Singleton
-    internal fun ioThread(): RxScheduler.IoThread = RxScheduler.IoThread
+    internal abstract fun applicationContext(application: Application): Context
 
-    @Provides
+    @Binds
     @Singleton
-    internal fun mainThread(): RxScheduler.MainThread = RxScheduler.MainThread
+    internal abstract fun toaster(toaster: ToasterImpl): Toaster
 
-    @Provides
-    @Singleton
-    internal fun applicationContext(application: Application): Context = application
+    @Module
+    companion object {
+
+        @JvmStatic
+        @Provides
+        @Singleton
+        fun environment(): Environment = Environment()
+
+        @JvmStatic
+        @Provides
+        @Singleton
+        fun ioThread(): RxScheduler.IoThread = RxScheduler.IoThread
+
+        @JvmStatic
+        @Provides
+        @Singleton
+        fun mainThread(): RxScheduler.MainThread = RxScheduler.MainThread
+    }
 }
