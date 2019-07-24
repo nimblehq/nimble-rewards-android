@@ -43,7 +43,7 @@ class WalletFragment : BaseFragment<WalletViewModel>() {
                     tvWalletAddress.text = getString(R.string.wallet_address, it.address)
                     tvEthBalance.text = getBalanceText(it.ethBalance)
                 },
-                onError = toast::display
+                onError = { /*toast.display(it)*/ }
             )
             .bindForDisposable()
     }

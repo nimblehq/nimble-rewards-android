@@ -5,53 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/llWalletHeader"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvReceiveEth"
+        style="@style/WalletMenuItem"
         android:layout_height="wrap_content"
         android:background="@color/toolbar"
-        android:orientation="horizontal"
+        android:drawableTop="@drawable/ic_qr_code"
         android:paddingStart="@dimen/_12sdp"
         android:paddingEnd="@dimen/_12sdp"
         android:paddingBottom="@dimen/_12sdp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:text="@string/receive"
+        app:layout_constraintEnd_toStartOf="@id/tvEthBalance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvReceiveEth"
-            style="@style/WalletMenuItem"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_qr_code"
-            android:text="@string/receive" />
+    <TextView
+        android:id="@+id/tvEthBalance"
+        style="@style/TextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/toolbar"
+        android:gravity="center"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:text="0.0000"
+        app:layout_constraintBottom_toTopOf="@id/tvBalance"
+        app:layout_constraintEnd_toStartOf="@id/tvTransferEth"
+        app:layout_constraintStart_toEndOf="@id/tvReceiveEth"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvBalance"
+        style="@style/TextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/toolbar"
+        android:gravity="center_horizontal"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:text="@string/balance"
+        app:layout_constraintBottom_toBottomOf="@id/tvReceiveEth"
+        app:layout_constraintEnd_toStartOf="@id/tvTransferEth"
+        app:layout_constraintStart_toEndOf="@id/tvReceiveEth"
+        app:layout_constraintTop_toBottomOf="@id/tvEthBalance" />
 
-            <TextView
-                android:id="@+id/tvEthBalance"
-                style="@style/TextView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="0.0000" />
-
-            <TextView
-                style="@style/TextView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/balance" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvTransferEth"
-            style="@style/WalletMenuItem"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_paper_plane"
-            android:text="@string/transfer" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tvTransferEth"
+        style="@style/WalletMenuItem"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar"
+        android:drawableTop="@drawable/ic_paper_plane"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:text="@string/transfer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvEthBalance"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivEthereum"
@@ -61,7 +72,7 @@
         android:src="@drawable/ic_ethereum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llWalletHeader" />
+        app:layout_constraintTop_toBottomOf="@id/tvReceiveEth" />
 
     <TextView
         android:id="@+id/tvWalletAddress"
