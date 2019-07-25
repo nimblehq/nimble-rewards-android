@@ -39,11 +39,17 @@ class WalletFragment : BaseFragment<WalletViewModel>() {
         super.onResume()
         viewModel.loadWallet()
             .subscribeBy(
-                onSuccess = {
-                    tvWalletAddress.text = getString(R.string.wallet_address, it.address)
-                    tvEthBalance.text = getBalanceText(it.ethBalance)
+                onSuccess = { wallet ->
+                    tvWalletAddress.text = getString(R.string.wallet_address, wallet.address)
+                    getBalanceText(wallet.ethBalance).let {
+                        tvEthBalance.text = it
+                        tvEthereumBalance.text = it
+                    }
+                    getBalanceText(wallet.nbgBalance).let {
+                        tvNimbleGoldBalance.text = it
+                    }
                 },
-                onError = { /*toast.display(it)*/ }
+                onError = toast::display
             )
             .bindForDisposable()
     }
@@ -53,7 +59,7 @@ class WalletFragment : BaseFragment<WalletViewModel>() {
         SpannableStringBuilder()
             .color(getColor(resources, R.color.eth_balance, null)) {
                 bold {
-                    append(format("%.3f", balance))
+                    append(format("%.2f", balance))
                 }
             }
 }

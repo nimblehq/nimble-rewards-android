@@ -9,7 +9,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 interface EthRepository {
-    fun fetchBalance(address: String): Single<BigDecimal>
+    fun fetchEthBalance(address: String): Single<BigDecimal>
+    fun fetchNbgBalance(address: String): Single<BigDecimal>
     fun transferEth(amount: BigDecimal, from: String, to: String): Single<TransactionReceipt>
 }
 
@@ -19,8 +20,12 @@ class EthRepositoryImpl @Inject constructor(
     private val walletHelper: WalletHelper
 ) : EthRepository {
 
-    override fun fetchBalance(address: String): Single<BigDecimal> {
-        return ethereumApi.getBalance(address)
+    override fun fetchEthBalance(address: String): Single<BigDecimal> {
+        return ethereumApi.getEthBalance(address)
+    }
+
+    override fun fetchNbgBalance(address: String): Single<BigDecimal> {
+        return ethereumApi.getNbgBalance(address, address)
     }
 
     override fun transferEth(
