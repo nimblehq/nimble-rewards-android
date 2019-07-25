@@ -10,4 +10,6 @@ sealed class NimbleGoldError(
 
     class FetchNbgBalanceError(cause: Throwable?) :
         NimbleGoldError(cause, R.string.error_fetch_nbg_balance)
+    class FetchNbgSymbolError(cause: Throwable?) :
+        NimbleGoldError(cause, R.string.error_fetch_nbg_symbol)
 }

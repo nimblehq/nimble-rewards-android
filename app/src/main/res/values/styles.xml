@@ -23,7 +23,7 @@
 
     <style name="BalanceTextView">
         <item name="android:gravity">center_vertical</item>
-        <item name="android:textSize">@dimen/_25ssp</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
         <item name="android:text">0.00</item>
         <item name="android:includeFontPadding">false</item>
     </style>

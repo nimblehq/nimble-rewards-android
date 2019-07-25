@@ -5,5 +5,7 @@ import java.math.BigDecimal
 data class Wallet(
     val address: String,
     val ethBalance: BigDecimal,
-    val nbgBalance: BigDecimal
+    val nbgBalance: BigDecimal,
+    val nbgSymbol: String,
+    val totalBalanceInUsd: BigDecimal
 )

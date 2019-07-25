@@ -30,6 +30,17 @@ class WalletFragment : BaseFragment<WalletViewModel>() {
             .subscribe { SignInActivity.launch(requireActivity()) }
             .bindForDisposable()
 
+        viewModel.wallet
+            .subscribe { wallet ->
+                tvUsdBalance.text = getBalanceText(wallet.totalBalanceInUsd, "$ ")
+                tvEthereumSymbol.text = getSymbolText("ETH")
+                tvEthereumBalance.text = getBalanceText(wallet.ethBalance)
+                tvNimbleGoldSymbol.text = getSymbolText(wallet.nbgSymbol)
+                tvNimbleGoldBalance.text = getBalanceText(wallet.nbgBalance)
+                tvWalletAddress.text = getString(R.string.wallet_address, wallet.address)
+            }
+            .bindForDisposable()
+
         tvTransferEth.setOnClickListener {
             findNavController().navigate(R.id.action_walletFragment_to_transferFragment)
         }
@@ -38,28 +49,25 @@ class WalletFragment : BaseFragment<WalletViewModel>() {
     override fun onResume() {
         super.onResume()
         viewModel.loadWallet()
-            .subscribeBy(
-                onSuccess = { wallet ->
-                    tvWalletAddress.text = getString(R.string.wallet_address, wallet.address)
-                    getBalanceText(wallet.ethBalance).let {
-                        tvEthBalance.text = it
-                        tvEthereumBalance.text = it
-                    }
-                    getBalanceText(wallet.nbgBalance).let {
-                        tvNimbleGoldBalance.text = it
-                    }
-                },
-                onError = toast::display
-            )
+            .subscribeBy(onError = toast::display)
             .bindForDisposable()
     }
 
     @SuppressLint("DefaultLocale")
-    private fun getBalanceText(balance: BigDecimal) =
+    private fun getBalanceText(balance: BigDecimal, prefix: String = "") =
         SpannableStringBuilder()
             .color(getColor(resources, R.color.eth_balance, null)) {
                 bold {
+                    append(prefix)
                     append(format("%.2f", balance))
+                }
+            }
+
+    private fun getSymbolText(symbol: String) =
+        SpannableStringBuilder()
+            .color(getColor(resources, R.color.eth_balance, null)) {
+                bold {
+                    append(symbol)
                 }
             }
 }

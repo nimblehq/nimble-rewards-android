@@ -15,12 +15,12 @@
         android:paddingEnd="@dimen/_12sdp"
         android:paddingBottom="@dimen/_12sdp"
         android:text="@string/receive"
-        app:layout_constraintEnd_toStartOf="@id/tvEthBalance"
+        app:layout_constraintEnd_toStartOf="@id/tvUsdBalance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvEthBalance"
+        android:id="@+id/tvUsdBalance"
         style="@style/TextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="@id/tvReceiveEth"
         app:layout_constraintEnd_toStartOf="@id/tvTransferEth"
         app:layout_constraintStart_toEndOf="@id/tvReceiveEth"
-        app:layout_constraintTop_toBottomOf="@id/tvEthBalance" />
+        app:layout_constraintTop_toBottomOf="@id/tvUsdBalance" />
 
     <TextView
         android:id="@+id/tvTransferEth"
@@ -61,18 +61,49 @@
         android:paddingBottom="@dimen/_12sdp"
         android:text="@string/transfer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvEthBalance"
+        app:layout_constraintStart_toEndOf="@id/tvUsdBalance"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:text="@string/assets"
+        app:layout_constraintTop_toBottomOf="@id/tvReceiveEth" />
+
+    <View
+        android:id="@+id/separator0"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
 
     <ImageView
         android:id="@+id/ivEthereum"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:src="@drawable/ic_ethereum"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvReceiveEth" />
+        app:layout_constraintTop_toBottomOf="@id/separator0" />
+
+    <TextView
+        android:id="@+id/tvEthereumSymbol"
+        style="@style/BalanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@id/ivEthereum"
+        app:layout_constraintStart_toEndOf="@id/ivEthereum"
+        app:layout_constraintTop_toTopOf="@id/ivEthereum" />
 
     <TextView
         android:id="@+id/tvEthereumBalance"
@@ -80,38 +111,72 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
         app:layout_constraintBottom_toBottomOf="@id/ivEthereum"
-        app:layout_constraintStart_toEndOf="@id/ivEthereum"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/ivEthereum" />
+
+    <View
+        android:id="@+id/separator1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/ivEthereum" />
 
     <ImageView
         android:id="@+id/ivNimbleGold"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:src="@drawable/ic_nimble_gold"
         app:layout_constraintEnd_toEndOf="@id/ivEthereum"
         app:layout_constraintStart_toStartOf="@id/ivEthereum"
-        app:layout_constraintTop_toBottomOf="@id/ivEthereum" />
+        app:layout_constraintTop_toBottomOf="@id/separator1" />
+
+    <TextView
+        android:id="@+id/tvNimbleGoldSymbol"
+        style="@style/BalanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@id/ivNimbleGold"
+        app:layout_constraintStart_toEndOf="@id/ivNimbleGold"
+        app:layout_constraintTop_toTopOf="@id/ivNimbleGold" />
 
     <TextView
         android:id="@+id/tvNimbleGoldBalance"
         style="@style/BalanceTextView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_30sdp"
         app:layout_constraintBottom_toBottomOf="@id/ivNimbleGold"
-        app:layout_constraintStart_toStartOf="@id/tvEthereumBalance"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/ivNimbleGold" />
+
+    <View
+        android:id="@+id/separator2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/ivNimbleGold" />
 
     <TextView
         android:id="@+id/tvWalletAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_50sdp"
-        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:text="@string/address"
         android:textIsSelectable="true"
-        app:layout_constraintTop_toBottomOf="@id/ivNimbleGold"
+        app:layout_constraintTop_toBottomOf="@id/separator2"
         tools:text="Address: 0x123456789" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

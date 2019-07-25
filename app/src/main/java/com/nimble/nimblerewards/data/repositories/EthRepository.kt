@@ -11,6 +11,7 @@ import javax.inject.Singleton
 interface EthRepository {
     fun fetchEthBalance(address: String): Single<BigDecimal>
     fun fetchNbgBalance(address: String): Single<BigDecimal>
+    fun fetchNbgSymbol(address: String): Single<String>
     fun transferEth(amount: BigDecimal, from: String, to: String): Single<TransactionReceipt>
 }
 
@@ -26,6 +27,10 @@ class EthRepositoryImpl @Inject constructor(
 
     override fun fetchNbgBalance(address: String): Single<BigDecimal> {
         return ethereumApi.getNbgBalance(address, address)
+    }
+
+    override fun fetchNbgSymbol(address: String): Single<String> {
+        return ethereumApi.getNbgSymbol(address)
     }
 
     override fun transferEth(

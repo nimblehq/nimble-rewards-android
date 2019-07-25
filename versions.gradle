@@ -12,8 +12,10 @@ versions.rxandroid = "2.1.1"
 versions.rxkotlin = "2.4.0-RC3"
 versions.web3j_android = "4.2.0-android"
 versions.lifecycle = '2.2.0-alpha02'
-versions.sdp_android = '1.0.6'
-versions.ssp_android = '1.0.6'
+versions.sdp_android = "1.0.6"
+versions.ssp_android = "1.0.6"
+versions.circle_indicator = "1.2.2@aar"
+versions.glide = "4.9.0"
 ext.versions = versions
 
 def support = [:]
@@ -58,6 +60,10 @@ def lifecycle = [:]
 lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
 lifecycle.viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
 
+def glide = [:]
+glide.core = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+
 def deps = [:]
 deps.support = support
 deps.dagger = dagger
@@ -72,4 +78,6 @@ deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.c
 deps.lifecycle = lifecycle
 deps.sdp_android = "com.intuit.sdp:sdp-android:$versions.sdp_android"
 deps.ssp_android = "com.intuit.ssp:ssp-android:$versions.ssp_android"
+deps.circle_indicator = "me.relex:circleindicator:$versions.circle_indicator"
+deps.glide = glide
 ext.deps = deps

@@ -50,9 +50,12 @@ dependencies {
     implementation deps.lifecycle.viewmodel_ktx
     implementation deps.sdp_android
     implementation deps.ssp_android
+    implementation deps.circle_indicator
+    implementation deps.glide.core
 
     kapt deps.dagger.compiler
     kapt deps.dagger.android_support_compiler
+    kapt deps.glide.compiler
 
     testImplementation deps.junit
 
