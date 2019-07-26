@@ -1,5 +1,7 @@
 package com.nimble.nimblerewards.ui.screens.rewards
 
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nimble.nimblerewards.R
@@ -7,6 +9,7 @@ import com.nimble.nimblerewards.data.models.Promotion
 import com.nimble.nimblerewards.data.models.Reward
 import com.nimble.nimblerewards.ui.common.BaseFragment
 import kotlinx.android.synthetic.main.fragment_rewards.*
+
 
 class RewardsFragment : BaseFragment<RewardsViewModel>() {
 
@@ -18,6 +21,8 @@ class RewardsFragment : BaseFragment<RewardsViewModel>() {
 
     private val promotionsAdapter by lazy { PromotionsPagerAdapter(requireContext()) }
 
+    private val handler = Handler(Looper.getMainLooper())
+
     override fun viewModel(): RewardsViewModel =
         ViewModelProviders.of(this, viewModelFactory)
             .get(RewardsViewModel::class.java)
@@ -28,6 +33,20 @@ class RewardsFragment : BaseFragment<RewardsViewModel>() {
 
         vpPromotions.adapter = promotionsAdapter
         populateTestData()
+        setupPromotionsAutoSwipe()
+    }
+
+    @Deprecated("To be refactored")
+    private fun setupPromotionsAutoSwipe() {
+        val runnable = object : Runnable {
+            override fun run() {
+                vpPromotions.currentItem =
+                    (vpPromotions.currentItem + 1) % promotionsAdapter.count
+
+                handler.postDelayed(this, 2000)
+            }
+        }
+        handler.postDelayed(runnable, 2000)
     }
 
     @Deprecated("To be removed")
@@ -60,5 +79,10 @@ class RewardsFragment : BaseFragment<RewardsViewModel>() {
         )
 
         indicators.setViewPager(vpPromotions)
+    }
+
+    override fun onDestroyView() {
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroyView()
     }
 }
