@@ -17,7 +17,7 @@
 
     <string name="create_new_wallet">Create New Wallet</string>
     <string name="import_your_wallet">Import Your Wallet</string>
-    <string name="wallet_address">Address: %s</string>
+    <string name="wallet_address">Address:\n\n%s</string>
     <string name="sign_out">Sign Out</string>
     <string name="receive">Receive</string>
     <string name="transfer">Transfer</string>
