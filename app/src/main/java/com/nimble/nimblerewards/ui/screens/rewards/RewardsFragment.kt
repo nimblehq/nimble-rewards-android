@@ -53,13 +53,16 @@ class RewardsFragment : BaseFragment<RewardsViewModel>() {
     private fun populateTestData() {
         rewardsAdapter.rewards = listOf(
             Reward(
-                name = "Discount Voucher"
+              imageUrl = "https://i.pinimg.com/originals/53/4a/2e/534a2e82b00b647e39307cb7f06035ab.jpg"
             ),
             Reward(
-                name = "Fast Food Coupon"
+                imageUrl = "https://vic.cfmeu.org.au/sites/vic.cfmeu.org.au/files/219460%20VILR%20CFMEU%20Member%20Discount%20Promotion_800x417px_FA.jpg"
             ),
             Reward(
-                name = "Movie Ticket"
+                imageUrl = "https://cdn.grabon.in/gograbon/images/merchant/1543561736695.png"
+            ),
+            Reward(
+                imageUrl = "https://media.istockphoto.com/vectors/cinema-ticket-isolated-on-white-background-vector-id921532564?k=6&m=921532564&s=612x612&w=0&h=SEhmd1DmtMZMrG9Qnx2ny1pnWys_YuCQO8Zt9TMy8YI="
             )
         )
 

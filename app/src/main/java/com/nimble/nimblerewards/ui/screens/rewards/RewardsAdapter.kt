@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.nimble.nimblerewards.R
 import com.nimble.nimblerewards.data.models.Reward
 import kotlinx.android.synthetic.main.item_reward.view.*
@@ -32,6 +33,12 @@ class RewardsAdapter : RecyclerView.Adapter<RewardsAdapter.Holder>() {
     class Holder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bindData(reward: Reward) {
             view.tvReward.text = reward.name
+
+            Glide.with(view.context)
+                .load(reward.imageUrl)
+                .placeholder(R.color.white)
+                .centerCrop()
+                .into(view.ivReward)
         }
     }
 }
