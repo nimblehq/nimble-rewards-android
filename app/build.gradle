@@ -31,27 +31,29 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.kotlin.stdlib
-    implementation deps.support.app_compat
-    implementation deps.support.core_ktx
-    implementation deps.constraint_layout
-    implementation deps.dagger.runtime
-    implementation deps.dagger.android
-    implementation deps.dagger.android_support
-    implementation deps.navigation.runtime_ktx
-    implementation deps.navigation.fragment_ktx
-    implementation deps.navigation.ui_ktx
-    implementation deps.reactivex.rxjava
-    implementation deps.reactivex.rxandroid
-    implementation deps.reactivex.rxkotlin
-    implementation deps.web3j_android.core
-    implementation deps.web3j_android.infura
-    implementation deps.lifecycle.extensions
-    implementation deps.lifecycle.viewmodel_ktx
-    implementation deps.sdp_android
-    implementation deps.ssp_android
-    implementation deps.circle_indicator
-    implementation deps.glide.core
+    implementation(
+        deps.kotlin.stdlib,
+        deps.support.app_compat,
+        deps.support.core_ktx,
+        deps.constraint_layout,
+        deps.dagger.runtime,
+        deps.dagger.android,
+        deps.dagger.android_support,
+        deps.navigation.runtime_ktx,
+        deps.navigation.fragment_ktx,
+        deps.navigation.ui_ktx,
+        deps.reactivex.rxjava,
+        deps.reactivex.rxandroid,
+        deps.reactivex.rxkotlin,
+        deps.web3j_android.core,
+        deps.web3j_android.infura,
+        deps.lifecycle.extensions,
+        deps.lifecycle.viewmodel_ktx,
+        deps.sdp_android,
+        deps.ssp_android,
+        deps.circle_indicator,
+        deps.glide.core
+    )
 
     kapt deps.dagger.compiler
     kapt deps.dagger.android_support_compiler

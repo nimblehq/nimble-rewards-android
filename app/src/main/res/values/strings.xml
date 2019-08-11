@@ -11,13 +11,16 @@
     <string name="error_wallet_does_not_exist">Wallet does not exist!</string>
     <string name="error_fetch_eth_balance">Failed to fetch Ethereum balance</string>
     <string name="error_fetch_nbg_balance">Failed to fetch NBG balance</string>
+    <string name="error_fetch_nrw_balance">Failed to fetch NRW balance</string>
     <string name="error_fetch_nbg_symbol">Failed to fetch NBG symbol</string>
+    <string name="error_fetch_nrw_symbol">Failed to fetch NRW symbol</string>
     <string name="error_transfer_eth">Failed to transfer Ethereum</string>
     <string name="error_sign_out">Failed to sign out</string>
 
     <string name="create_new_wallet">Create New Wallet</string>
     <string name="import_your_wallet">Import Your Wallet</string>
-    <string name="wallet_address">Address:\n\n%s</string>
+    <string name="wallet_address">Address:\n%s</string>
+    <string name="wallet_recovery_key">Recover Key:\n%s</string>
     <string name="sign_out">Sign Out</string>
     <string name="receive">Receive</string>
     <string name="transfer">Transfer</string>
@@ -27,5 +30,6 @@
     <string name="amount_in_ethereum">Amount in Ethereum</string>
     <string name="transferred_successfully">Transferred Successfully</string>
     <string name="address">Address</string>
+    <string name="recovery_key">Recovery Key</string>
     <string name="assets">Assets</string>
 </resources>

@@ -14,7 +14,12 @@ sealed class Environment {
 
     val NIMBLE_GOLD_TOKEN_ADDRESS: String
         get() = when (this) {
-            is Staging, is Production -> "0x94adcb147b82f828080d7c057f61c518c6d4e8eb"
+            is Staging, is Production -> "0x9a47561cf2ce4326aa2523818d7902585a92c667"
+        }
+
+    val NIMBLE_REWARD_TOKEN_ADDRESS: String
+        get() = when (this) {
+            is Staging, is Production -> "0x363237203a6a36a443fcd7455d1f28d33244774b"
         }
 
     companion object {

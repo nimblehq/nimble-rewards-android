@@ -167,6 +167,46 @@
         android:background="@color/light_gray"
         app:layout_constraintTop_toBottomOf="@id/ivNimbleGold" />
 
+    <ImageView
+        android:id="@+id/ivNimbleReward"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="@id/ivEthereum"
+        app:layout_constraintStart_toStartOf="@id/ivEthereum"
+        app:layout_constraintTop_toBottomOf="@id/separator2" />
+
+    <TextView
+        android:id="@+id/tvNimbleRewardSymbol"
+        style="@style/BalanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@id/ivNimbleReward"
+        app:layout_constraintStart_toEndOf="@id/ivNimbleReward"
+        app:layout_constraintTop_toTopOf="@id/ivNimbleReward" />
+
+    <TextView
+        android:id="@+id/tvNimbleRewardBalance"
+        style="@style/BalanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        app:layout_constraintBottom_toBottomOf="@id/ivNimbleReward"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivNimbleReward" />
+
+    <View
+        android:id="@+id/separator3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/ivNimbleReward" />
+
     <TextView
         android:id="@+id/tvWalletAddress"
         android:layout_width="match_parent"
@@ -176,7 +216,19 @@
         android:layout_marginEnd="@dimen/_20sdp"
         android:text="@string/address"
         android:textIsSelectable="true"
-        app:layout_constraintTop_toBottomOf="@id/separator2"
+        app:layout_constraintTop_toBottomOf="@id/separator3"
         tools:text="Address: 0x123456789" />
+
+    <TextView
+        android:id="@+id/tvRecoveryKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:text="@string/recovery_key"
+        android:textIsSelectable="true"
+        app:layout_constraintTop_toBottomOf="@id/tvWalletAddress"
+        tools:text="Recovery Key: asdfghjkl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

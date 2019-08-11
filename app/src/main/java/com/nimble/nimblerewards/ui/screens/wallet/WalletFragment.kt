@@ -37,7 +37,10 @@ class WalletFragment : BaseFragment<WalletViewModel>() {
                 tvEthereumBalance.text = getBalanceText(wallet.ethBalance)
                 tvNimbleGoldSymbol.text = getSymbolText(wallet.nbgSymbol)
                 tvNimbleGoldBalance.text = getBalanceText(wallet.nbgBalance)
+                tvNimbleRewardSymbol.text = getSymbolText(wallet.nrwSymbol)
+                tvNimbleRewardBalance.text = getBalanceText(wallet.nrwBalance, "", "%s")
                 tvWalletAddress.text = getString(R.string.wallet_address, wallet.address)
+                tvRecoveryKey.text = getString(R.string.wallet_recovery_key, wallet.recoveryKey)
             }
             .bindForDisposable()
 
@@ -54,12 +57,12 @@ class WalletFragment : BaseFragment<WalletViewModel>() {
     }
 
     @SuppressLint("DefaultLocale")
-    private fun getBalanceText(balance: BigDecimal, prefix: String = "") =
+    private fun getBalanceText(balance: BigDecimal, prefix: String = "", format: String = "%.2f") =
         SpannableStringBuilder()
             .color(getColor(resources, R.color.eth_balance, null)) {
                 bold {
                     append(prefix)
-                    append(format("%.2f", balance))
+                    append(format(format, balance))
                 }
             }
 

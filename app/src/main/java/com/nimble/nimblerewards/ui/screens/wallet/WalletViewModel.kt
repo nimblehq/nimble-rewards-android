@@ -4,13 +4,9 @@ import android.app.Application
 import com.nimble.nimblerewards.data.exceptions.WalletError.WalletDoesNotExistError
 import com.nimble.nimblerewards.data.models.Wallet
 import com.nimble.nimblerewards.ui.common.BaseViewModel
-import com.nimble.nimblerewards.usecases.wallet.FetchEthBalanceUseCase
-import com.nimble.nimblerewards.usecases.wallet.FetchNbgBalanceUseCase
-import com.nimble.nimblerewards.usecases.wallet.FetchNbgSymbolUseCase
-import com.nimble.nimblerewards.usecases.wallet.LoadWalletUseCase
+import com.nimble.nimblerewards.usecases.wallet.*
 import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.rxkotlin.Singles
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
@@ -21,7 +17,9 @@ class WalletViewModel @Inject constructor(
     private val loadWalletUseCase: LoadWalletUseCase,
     private val fetchEthBalanceUseCase: FetchEthBalanceUseCase,
     private val fetchNbgBalanceUseCase: FetchNbgBalanceUseCase,
-    private val fetchNbgSymbolUseCase: FetchNbgSymbolUseCase
+    private val fetchNbgSymbolUseCase: FetchNbgSymbolUseCase,
+    private val fetchNrwBalanceUseCase: FetchNrwBalanceUseCase,
+    private val fetchNrwSymbolUseCase: FetchNrwSymbolUseCase
 ) : BaseViewModel(application) {
 
     private val _openSignIn = PublishSubject.create<Unit>()
@@ -38,15 +36,18 @@ class WalletViewModel @Inject constructor(
             .flatMap {
                 Singles.zip(
                     fetchEthBalanceUseCase.execute(it.address),
-                    fetchNbgBalanceUseCase.execute(it.address),
-                    fetchNbgSymbolUseCase.execute(it.address)
-                ).map { (ethBalance, nbgBalance, nbgSymbol) ->
+                    fetchNimbleGoldInfo(it.address),
+                    fetchNimbleRewardInfo(it.address)
+                ).map { (ethBalance, nbgInfo, nrwInfo) ->
                     Wallet(
                         it.address,
+                        it.ecKeyPair.privateKey.toString(16),
                         ethBalance,
-                        nbgBalance,
-                        nbgSymbol,
-                        ethBalance.plus(nbgBalance)
+                        nbgInfo.first,
+                        nbgInfo.second,
+                        nrwInfo.first,
+                        nrwInfo.second,
+                        ethBalance.plus(nbgInfo.second).plus(nrwInfo.second)
                     )
                 }
             }
@@ -58,4 +59,16 @@ class WalletViewModel @Inject constructor(
             .doOnSuccess(_wallet::onNext)
             .ignoreElement()
     }
+
+    private fun fetchNimbleGoldInfo(address: String) =
+        Singles.zip(
+            fetchNbgSymbolUseCase.execute(address),
+            fetchNbgBalanceUseCase.execute(address)
+        )
+
+    private fun fetchNimbleRewardInfo(address: String) =
+        Singles.zip(
+            fetchNrwSymbolUseCase.execute(address),
+            fetchNrwBalanceUseCase.execute(address)
+        )
 }

@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Module(
     includes = [
         NetworkModule::class,
-        EthereumModule::class,
+        BlockChainModule::class,
         ViewModelModule::class,
         RepositoryModule::class
     ]

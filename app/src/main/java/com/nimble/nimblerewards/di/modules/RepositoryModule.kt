@@ -1,7 +1,7 @@
 package com.nimble.nimblerewards.di.modules
 
-import com.nimble.nimblerewards.data.repositories.EthRepository
-import com.nimble.nimblerewards.data.repositories.EthRepositoryImpl
+import com.nimble.nimblerewards.data.repositories.BlockChainRepository
+import com.nimble.nimblerewards.data.repositories.BlockChainRepositoryImpl
 import com.nimble.nimblerewards.data.repositories.WalletRepository
 import com.nimble.nimblerewards.data.repositories.WalletRepositoryImpl
 import dagger.Binds
@@ -16,5 +16,5 @@ interface RepositoryModule {
 
     @Binds
     @Singleton
-    fun ethRepository(ethRepository: EthRepositoryImpl): EthRepository
+    fun blockChainRepository(blockChainRepository: BlockChainRepositoryImpl): BlockChainRepository
 }
